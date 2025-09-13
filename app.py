@@ -4,19 +4,19 @@ import os
 
 app = Flask(__name__)
 
-# Connexion à MongoDB (le nom "mongo" sera le nom du conteneur)
+# Connexion à MongoDB
 client = MongoClient("mongodb://mongo:27017/")
 db = client["testdb"]
 collection = db["messages"]
 
 @app.route("/")
 def home():
-    return "Hello depuis Flask + MongoDB 🎉"
+    return "Hello depuis Flask + MongoDB "
 
 @app.route("/add")
 def add_message():
     collection.insert_one({"message": "Bonjour MongoDB"})
-    return "Message ajouté dans MongoDB ✅"
+    return "Message ajouté dans MongoDB "
 
 @app.route("/all")
 def get_all():
